@@ -1,62 +1,112 @@
 <?php $title = 'Semaine intensive'; ?>
 <?php $currentPage = 'index'; ?>
+
 <?php
 
-    // ISS Location
-    $url = 'http://api.open-notify.org/iss-now.json';
+  // Includes
+  include 'fonctions.php';
 
-    // Country location
-    $country = empty($_GET['country']) ? 'France' : $_GET['country'];
+
+  // Déclaration des variables pour le scope global
+  // $isResult_iss;
+  // $isResult_weather;
+  // $issLatitude;
+  // $issLongitude;
+
+
+    // 
+    // ISS API request
+    // 
+
+    $url_iss = 'http://api.open-notify.org/iss-now.json';
     
     // Create cache info
-    $cacheKey = md5($url);
+    $cacheKey = md5($url_iss);
     $cachePath = './cache/'.$cacheKey;
     $cacheUsed = false;
-    
+
     // Cache available
     if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
     {
-        $result = file_get_contents($cachePath);
+        $result_iss = file_get_contents($cachePath);
         $cacheUsed = true;
     }
 
     // Cache not available
     else
     {
-        // Make request to API
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        // Save in cache
-        file_put_contents($cachePath, $result);
+      $isResult_iss = issPosition($url_iss, $cachePath);
     }
 
-    // decode JSON
-    $result = json_decode($result);
+    // Decode JSON
+    $result_iss = json_decode($result_iss);
+
+    $issLatitude = $result_iss->iss_position->latitude;
+    $issLongitude = $result_iss->iss_position->longitude;
+    
+    // 
+    // Weather API request
+    // 
+
+    $url_weather = 'https://api.openweathermap.org/data/2.5/weather?';
+
+    // Country location
+    $url_weather.= http_build_query([
+        'lat' => $issLatitude,
+        'lon' => $issLongitude,
+        'appid' => '9e8150c9d6fbf87d678d2cf7f7a2c00a',
+        'units' => 'metric',
+    ]);
+
+    // Create cache info
+    $cacheKey = md5($url_weather);
+    $cachePath = './cache/'.$cacheKey;
+    $cacheUsed = false;
+
+    // Cache available
+    if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
+    {
+        $result_weather = file_get_contents($cachePath);
+        $cacheUsed = true;
+    }
+
+    // Cache not available
+    else
+    {
+      $isResult_weather = weatherPosition($url_weather, $cachePath);
+    }
+
+    // Decode JSON
+    $result_weather = json_decode($result_weather);
+
 
     // Create static map URL
-    if($result->message === 'success')
+    if($result_iss->message === 'success')
     {
+        // ISS Location variables
+        $issLatitude;
+        $issLongitude;
+
         $staticMapUrl = 'https://maps.googleapis.com/maps/api/staticmap?';
         $staticMapUrl .= http_build_query([
-            'center' => $result->iss_position->latitude.','.$result->iss_position->longitude,
-            'markers' => $result->iss_position->latitude.','.$result->iss_position->longitude,
+            'center' => $issLatitude.','.$issLongitude,
+            'markers' => $issLatitude.','.$issLongitude,
             'zoom' => 1,
             'size' => '300x300',
             'key' => 'AIzaSyAPwpGHLkdZCvyPYjUxoVTQHozgOmE0eH4',
         ]);
 
-        echo '<pre>';
-        print_r($staticMapUrl);
-        echo '</pre>';
     }
+
+    echo '<pre>';
+    print_r($result_weather->coord->lon);
+    echo '</pre>';
+    echo '<pre>';
+    print_r($result_weather->coord->lat);
+    echo '</pre>';
+    echo '<pre>';
+    print_r($url_weather);
+    echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +126,14 @@
   </head>
   <body>
     <h3>ISS Location</h3>
-        <div>Longitude: <?= $result->iss_position->longitude ?>°</div>
-        <div>Latitude: <?= $result->iss_position->latitude ?>°</div>
+        <div>Longitude: <?= $issLongitude ?>°</div>
+        <div>Latitude: <?= $issLatitude ?>°</div>
     <img width="300" height="300" src="<?= $staticMapUrl ?>">
+
+    <h3>Weather</h3>
+        <?php foreach($result_weather->weather as $_weather): ?>
+            <div><?= $_weather->description ?></div>
+        <?php endforeach ?>
   </body>
+  <script src="script.js"><script>
 </html>
