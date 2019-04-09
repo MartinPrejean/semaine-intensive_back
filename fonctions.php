@@ -41,8 +41,6 @@ function weatherPosition($url, $cachePath)
 
     // Save in cache
     file_put_contents($cachePath, $result_weather);
-
-    // return $result_weather;
 }
 
 // Function for Open Weather App API request 
@@ -63,6 +61,24 @@ function countryPosition($url, $cachePath)
 
     // Save in cache
     file_put_contents($cachePath, $result_geonames);
+}
 
-    // return $result_geonames;
+// Function for Rest API request 
+function countryInfo($url, $cachePath)
+{   
+    global $result_rest;
+
+    // Make request to API
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+
+    $result_rest = curl_exec($curl);
+    curl_close($curl);
+
+    // Save in cache
+    file_put_contents($cachePath, $result_rest);
 }

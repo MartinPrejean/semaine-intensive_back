@@ -46,6 +46,15 @@
 
     $country = $result_geonames->geonames[0]->countryName ?? 'The ISS is not below a country, maybe an ocean.';
 
+
+    include 'API_request/restAPI_request.php';
+
+    // echo '<pre>';
+    // print_r($result_rest);
+    // echo '</pre>';
+    // echo '<pre>';
+    // print_r($url_rest);
+    // echo '</pre>';
     // echo '<pre>';
     // print_r($result_geonames);
     // echo '</pre>';

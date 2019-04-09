@@ -6,6 +6,11 @@
 
     $url_weather = 'https://api.openweathermap.org/data/2.5/weather?';
 
+    // Create cache info
+    $cacheKey = md5($url_weather);
+    $cachePath = './cache/'.$cacheKey;
+    $cacheUsed = false;
+
     // Country location
     $url_weather.= http_build_query([
         'lat' => $issLatitude,
@@ -13,11 +18,6 @@
         'appid' => '9e8150c9d6fbf87d678d2cf7f7a2c00a',
         'units' => 'metric',
     ]);
-
-    // Create cache info
-    $cacheKey = md5($url_weather);
-    $cachePath = './cache/'.$cacheKey;
-    $cacheUsed = false;
 
     // Cache available
     if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
