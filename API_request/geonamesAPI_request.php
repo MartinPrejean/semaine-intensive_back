@@ -33,4 +33,6 @@
 
     // Decode JSON
     $result_geonames = json_decode($result_geonames);
+
+    return $result_geonames;
 ?>

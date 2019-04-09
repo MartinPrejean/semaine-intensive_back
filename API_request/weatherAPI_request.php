@@ -34,5 +34,4 @@
 
     // Decode JSON
     $result_weather = json_decode($result_weather);
-
 ?>
