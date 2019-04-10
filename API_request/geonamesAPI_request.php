@@ -34,5 +34,5 @@
     // Decode JSON
     $result_geonames = json_decode($result_geonames);
 
-    return $result_geonames;
+    $country = $result_geonames->geonames[0]->countryName ?? 'Ocean';
 ?>

@@ -12,7 +12,7 @@
     $cacheUsed = false;
 
     // Cache available
-    if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
+    if(file_exists($cachePath) && time() - filemtime($cachePath) < 5)
     {
         $result_iss = file_get_contents($cachePath); 
         $cacheUsed = true;

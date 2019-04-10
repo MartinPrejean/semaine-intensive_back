@@ -1,0 +1,44 @@
+body 
+{
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    overflow-x:hidden;
+    color: #ffffff;
+}
+
+p
+{
+    color: #000000;
+}
+
+#svg2
+{
+    width: 100%;
+    height: 100%;
+    transform: translate(0%,0%) scale(1);
+    transition: ease-in-out 0.5s transform;
+}
+
+.container
+{
+    height: 500px;
+}
+
+
+#svg
+{
+    fill: black;
+    z-index: 2;
+    color: black;
+    width: 100%;
+    height: 100%;
+
+}
+
+.locations
+{
+    width: 200px;
+    z-index: 100;
+    height: 200px;
+}

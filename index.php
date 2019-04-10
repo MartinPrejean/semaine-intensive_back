@@ -3,6 +3,12 @@
 
 <?php
 
+  global $country;
+  
+  // ISS Location variables
+  global $issLatitude;
+  global $issLongitude;
+
   // Includes
   include 'fonctions.php';
 
@@ -19,16 +25,12 @@
   // Weather API request
   include 'API_request/weatherAPI_request.php';
 
-
     // 
     // Create static map URL
     //
 
     if($result_iss->message === 'success')
     {
-        // ISS Location variables
-        $issLatitude;
-        $issLongitude;
 
         $staticMapUrl = 'https://maps.googleapis.com/maps/api/staticmap?';
         $staticMapUrl .= http_build_query([
@@ -44,9 +46,12 @@
     // Geonames API request
     include 'API_request/geonamesAPI_request.php';
 
-    $country = $result_geonames->geonames[0]->countryName ?? 'The ISS is not below a country, maybe an ocean.';
+    echo '<pre>';
+    print_r($url_geonames);
+    echo '</pre>';
+  
 
-
+    // Rest API request
     include 'API_request/restAPI_request.php';
 
     // echo '<pre>';
@@ -54,9 +59,6 @@
     // echo '</pre>';
     // echo '<pre>';
     // print_r($url_rest);
-    // echo '</pre>';
-    // echo '<pre>';
-    // print_r($result_geonames);
     // echo '</pre>';
 
 ?>
@@ -93,6 +95,6 @@
             Weather casting : <?= $_weather->description ?></div>
           </p>
       <?php endforeach ?>
+  <script src="scripts/script.js"><script>
   </body>
-  <script src="script.js"><script>
 </html>
