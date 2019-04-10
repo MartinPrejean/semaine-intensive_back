@@ -5,14 +5,14 @@ class Map {
         this.width = this.element.offsetWidth
         this.height = this.element.offsetHeight
 
-        this.projection = d3.geoNaturalEarth1() //Changer projection de la map
+        this.projection = d3.geoNaturalEarth1() // Changer projection de la map
             .center([0, 0])
             .scale(this.width / this.height * 80) // Modifier taille map
-            .translate([this.width / 2, this.height / 1.75]) //mofifier position
+            .translate([this.width / 2, this.height / 1.75]) // Mofifier position
         this.path = d3.geoPath()
             .projection(this.projection)
 
-            this.svg = d3.select('.container').append("svg")
+            this.svg = d3.select('.map').append("svg")
             .attr("id", "svg")
             .attr("width", this.width)
             .attr("height", this.height)
@@ -24,7 +24,10 @@ class Map {
         this.circle
         this.initMap()
         this.resizeMap()
-        this.popDot("#FF0000", _lat, _long)
+        this.popDot(_lat, _long)
+        this.apiCall()
+        this.tick()
+        this.componentDidMount()
     }
 
     initMap() {        
@@ -38,19 +41,19 @@ class Map {
         })
     }
 
-    popDot(_color, _long, _lat) { //Bien envoyer un objet avc latitude et longitude pour projection
+    popDot(_long, _lat) { // Bien envoyer un objet avc latitude et longitude pour projection
         this.locations.selectAll('circle').remove()        
         this.circle = this.locations
             .append("circle", )
             .attr("r", 5)
-            .style('fill', _color)
             .attr("transform", () => {
                 return "translate(" + this.projection([
-                    _long, // longitude
-                    _lat,
+                    _lat, // latitude ISS
+                    _long // longitude ISS
                 ]) + ")"
             })
             .attr('class', 'ripple-effect')
+        
     }
 
     resizeMap() {
@@ -71,12 +74,34 @@ class Map {
 
         window.addEventListener('resize', resize)
     }
+
+    apiCall() {
+        window
+            .fetch('http://api.open-notify.org/iss-now.json',
+            {
+                method: 'get'
+            })
+            .then((_response) =>
+            {
+                return _response.json()
+            })
+            .then((_result) =>
+            {
+                longitudeISS = _result.iss_position.longitude
+                latitudeISS = _result.iss_position.latitude
+            })
+    }
+
+    tick() {
+        this.apiCall()
+        this.popDot(latitudeISS, longitudeISS)
+    }
+    
+    componentDidMount() {
+        setInterval(()=> this.tick(), 5000)
+    }
 }
-const container = document.querySelector('.container')
-// console.log(container);
-console.log(longitudeISS);
-let map = new Map(container,latitudeISS,longitudeISS);
 
-
-
-// setTimeout(map.popDot, 5000);
+const map = document.querySelector('.map')
+let world = new Map(map,longitudeISS,latitudeISS);
+    
