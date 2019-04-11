@@ -23,4 +23,4 @@ $key = array_keys((array) $result->query->pages)[0];
 $intro = $result->query->pages->$key->extract;
 
 // Print the intro of the research
-// print_r($intro)
+// print_r($intro);

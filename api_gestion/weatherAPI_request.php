@@ -20,25 +20,6 @@ $URL.= http_build_query([
 // Get data from URL
 $data = getData($URL);
 $result = json_decode($data);
+// Get Weather from Json file
 $weather = $result->weather[0]->description;
 $temp = $result->main->temp;
-// var_dump($temp);
-
-
-
-// // Create cache info
-// $cacheKey = md5($URL);
-// $cachePath = './cache/'.$cacheKey;
-// $cacheUsed = false;
-
-//     // Cache not available
-// else
-// {
-//     $isResult_weather = weatherPosition($URL, $cachePath);
-// }
-//     // Cache available
-// if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
-// {
-//     $result_weather = file_get_contents($cachePath);
-//     $cacheUsed = true;
-// }

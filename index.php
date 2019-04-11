@@ -6,7 +6,8 @@
 // Includes
   include 'api_gestion/mealAPI.php';
   include 'api_gestion/weatherAPI_request.php';
-  // include 'api_gestion/mealAPI.php';
+  include 'api_gestion/restCountryAPI.php';
+  include 'api_gestion/wikiAPI.php';
 
 //   include 'fonctions.php';
 ?>
@@ -31,6 +32,7 @@
         <div><?= $issLongitude ?> <br><br></div>
         <div><?= $issLatitude ?></div>
         <div><?= $country ?><br><br></div>
+        <div><?= $population ?><br><br></div>
         <div><?= $weather ?><br><br></div>
         <div><?= $temp ?><br><br></div>
         <div><?= $intro ?><br><br></div>

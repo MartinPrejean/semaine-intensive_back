@@ -1,12 +1,12 @@
 
 <?php
 // Includes
-include 'wikiAPI.php';
+include 'geolocAPI.php';
 
 /*
 *                      TheMealDB API request
 */
-// $country = 'France';
+$country = 'France';
 // country into nationality
 $nationalities = array (
   'France' => 'French',
@@ -33,30 +33,33 @@ $nationalities = array (
   'Slovakie' => 'Slovakian',
   'Thailand' => 'Thai',
   'Arabic Emirate' => 'Arabic',
-  'Vietnam' => 'vietnamese',
+  'Vietnam' => 'vietnamese'
 );
 // Check if this Nationality exist in TheMealDB
 foreach ($nationalities as $key => $value) {
   if ($country == $key) {
     $country2 = $value;
-    // Call to curl - Meals 
+    // Call to cURL - Meals 
     $URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a='.$country2;
       
     // Get data from URL - Meals
     $data = getData($URL);
     $result = json_decode($data);
-      
+  
     // Get meal ID 
     $mealId = $result->meals[0]->idMeal;
-      
-    // Call to curl - Recipe 
+    
+    // Call to cURL - Recipe 
     $URL2 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='.$mealId;
-      
+  
     // Get data from URL - Meals
     $data2 = getData($URL2);
     $result = json_decode($data2);
-      
+    var_dump($result);         
     // Get Meal name
+    $mealRecipe = $result->meals[0]->strInstructions;
+
+    // Get Meal recipe
     $mealName = $result->meals[0]->strMeal;
       
     // Get Meal dishes type
@@ -83,6 +86,7 @@ foreach ($nationalities as $key => $value) {
         array_push($quantitiesTable, $result->meals[0]->$quantities);
       }
     }
+    break;
   }   
   else{
   $country2 = 'not implemented yet';
