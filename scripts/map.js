@@ -5,10 +5,10 @@ class Map {
         this.width = this.element.offsetWidth
         this.height = this.element.offsetHeight
 
-        this.projection = d3.geoNaturalEarth1() // Change projection of the map
+        this.projection = d3.geoNaturalEarth1() // Changer projection de la map
             .center([0, 0])
-            .scale(this.width / this.height * 250) // Scale map
-            .translate([this.width / 2, this.height / 1.75]) // Modify position
+            .scale(this.width / this.height * 100) // Modifier taille map
+            .translate([this.width / 2, this.height / 1.75]) // Mofifier position
         this.path = d3.geoPath()
             .projection(this.projection)
 
@@ -16,6 +16,8 @@ class Map {
             .attr("id", "svg")
             .attr("width", this.width)
             .attr("height", this.height)
+
+        
 
         this.deps = this.svg.append("g")
         this.locations = this.svg.append("svg:g")
@@ -30,7 +32,6 @@ class Map {
         
     }
 
-    // Create Map
     initMap() {        
         d3.json('./custom.geo.json').then((_geojson) => {
             this.deps.selectAll("path")
@@ -42,23 +43,21 @@ class Map {
         })
     }
 
-    // Create dot for ISS real-time Position
-    popDot(_long, _lat) { // Object with longitude and latitude for parameters
+    popDot(_long, _lat) { // Bien envoyer un objet avc latitude et longitude pour projection
         this.locations.selectAll('circle').remove()        
         this.circle = this.locations
             .append("circle", )
             .attr("r", 5)
             .attr("transform", () => {
                 return "translate(" + this.projection([
-                    _lat, // ISS Latitude
-                    _long // ISS Longitude
+                    _lat, // latitude ISS
+                    _long // longitude ISS
                 ]) + ")"
             })
             .attr('class', 'ripple-effect')
         
     }
 
-    // Resize map for responsive
     resizeMap() {
         const resize = () => {
             this.width = this.element.offsetWidth
@@ -78,7 +77,6 @@ class Map {
         window.addEventListener('resize', resize)
     }
 
-    // Fetch data from ISS API
     apiCall() {
         window
             .fetch('http://api.open-notify.org/iss-now.json',
@@ -93,6 +91,7 @@ class Map {
             {
                 longitudeISS = _result.iss_position.longitude
                 latitudeISS = _result.iss_position.latitude
+                console.log(latitudeISS, longitudeISS);
 
             })
     }
@@ -102,7 +101,6 @@ class Map {
         this.popDot(latitudeISS, longitudeISS)
     }
     
-    // Call ISS API every 5s for ISS location
     componentDidMount() {
         setInterval(()=> this.tick(), 5000)
     }
