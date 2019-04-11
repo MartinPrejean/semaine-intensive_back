@@ -1,3 +1,5 @@
+/* ALL FONT */
+
 @font-face {
 	font-family: 'Geomanist';
 	src: url('fonts/geomanist/hinted-Geomanist-Light.eot');
@@ -46,7 +48,7 @@ nav{
 	font-family: 'Geomanist';
 	font-weight: 500;
 	text-transform: uppercase;
-	margin-top: 36px; /* a changer */
+	margin-top: 36px;
 }
 
 nav .list{
@@ -118,9 +120,6 @@ nav a{
 	color: #333333;
 }
 
-
-
-
 .button_discover{
 	width: 206px;
 	height: 50px;
@@ -160,13 +159,14 @@ nav a{
 }
 
 .ripple-effect{
-	fill: red;
+	fill: #FFD32A;
 }
 
-/* INDEX CSS */
+/* INDEX CSS PAGE */
 
 /* INFO COUNTRY */
 
+/* INFO COUNTRY */
 .country{
 	font-family: 'Geomanist';
 	font-style: normal;
@@ -176,8 +176,6 @@ nav a{
 
 	color: #333333;
 }
-
-
 
 .active_country{
 	font-family: Geomanist;
@@ -189,6 +187,7 @@ nav a{
 	color: #FFD32A;
 }
 
+/* COORDONATE AND WEATHER */
 .longitude{
 	margin-right: 45px;
 	font-family: 'Abel';
@@ -496,13 +495,15 @@ nav a{
 .container_date{
 	display: flex;
 	flex-direction: row;
-	margin-top: 80px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .container_date_reverse{
 	display: flex;
 	flex-direction: row-reverse;
-	margin-top: 80px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .container_date .container_picture img{
@@ -574,9 +575,22 @@ nav a{
 }
 
 .container_timeline:nth-last-child(-n+1){
-	margin-bottom: 100px;
+	margin-bottom: 80px;
 }
 
+.copyright{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 180px;
+	font-family: Geomanist;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: normal;
+
+	color: #333333;
+}
 
 
 /* MEDIA QUERIES */

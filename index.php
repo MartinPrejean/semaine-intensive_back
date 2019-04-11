@@ -117,7 +117,8 @@
                     <div class="recipe_description"><?= $mealRecipe ?></div>
                 </div>
             </div> 
-        </div>         
+        </div>  
+        <?php include 'templates/footer.php'; ?>       
     </div>
 
     <script>
