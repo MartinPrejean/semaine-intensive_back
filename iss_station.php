@@ -1,8 +1,10 @@
+<?= $title = 'ISS STATION';?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <title>ISS STATION</title>
+    <title><?php echo($title); ?></title>
     <meta name="description" content="Semaine Intensive Back">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,7 +24,6 @@
                 <span class="grey_color">Weight : </span> 420 tons <br>
                 <span class="grey_color">Distance : </span> 408 km <br>
             </div>
-            <!-- <img src="../images/International_Space_Station.svg" alt="#"> -->
         </div>
 
         <div class="container_timeline">
@@ -145,9 +146,6 @@
                     <div class="text_reverse">Proteins can be grown as crystals in space with nearly perfect three-dimensional structures useful for the development of new drugs. The ISS National L’ab’s protein crystal growth (PCG) series of flights began in 2013, allowing researchers to utilize the unique environment of the ISS.</div>
                 </div>
             </div>
-
-                        
-            
         </div>
     </div>
 </body>

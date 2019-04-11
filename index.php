@@ -21,11 +21,7 @@
 
     include 'API_request/wikiAPI.php';
 
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <!--[if lte IE 7]> <html class="ie67 ie678" lang="fr"> <![endif]-->
