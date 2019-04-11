@@ -21,6 +21,8 @@
 
     include 'API_request/wikiAPI.php';
 
+    include 'API_request/restCountryAPI.php';
+
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<?= $title = 'ISS STATION';?>
+<?php $title = 'ISS STATION';?>
 
 <!DOCTYPE html>
 <html lang="en">

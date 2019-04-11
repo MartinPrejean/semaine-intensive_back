@@ -36,8 +36,10 @@ $nationalities = array (
 );
 
 // Check if this Nationality exist in TheMealDB
-foreach ($nationalities as $key => $value) {
-  if ($country == $key) {
+foreach ($nationalities as $key => $value) 
+{
+  if ($country == $key) 
+  {
     $country2 = $value;
     // Call to curl - Meals 
     $URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a='.$country2;
@@ -61,7 +63,6 @@ foreach ($nationalities as $key => $value) {
         $result = json_decode($data);
     }
 
-      
     // Get meal ID 
     $mealId = $result->meals[0]->idMeal;
       
@@ -69,7 +70,7 @@ foreach ($nationalities as $key => $value) {
     $URL2 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='.$mealId;
 
     // Create cache info
-    $cacheKey = md5($URL);
+    $cacheKey = md5($URL, $cachePath);
     $cachePath = './cache/'.$cacheKey;
     $cacheUsed = false;
 
@@ -87,7 +88,6 @@ foreach ($nationalities as $key => $value) {
       $result = json_decode($data2);
     }
 
-      
     // Get Meal name
     $mealName = $result->meals[0]->strMeal;
       
@@ -117,7 +117,9 @@ foreach ($nationalities as $key => $value) {
     }
     break;
   }   
-  else{
+
+  else
+  {
     $country2 = 'not implemented yet';
     $quantitiesTable = [];
     $quantitiesTable[]='not implemented yet';
