@@ -6,7 +6,7 @@ include 'geolocAPI.php';
 /*
 *                      TheMealDB API request
 */
-$country = 'France';
+
 // country into nationality
 $nationalities = array (
   'France' => 'French',
