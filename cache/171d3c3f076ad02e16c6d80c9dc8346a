@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"coord":{"lon":84.05,"lat":-47.07},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"stations","main":{"temp":7.29,"pressure":996.79,"humidity":100,"temp_min":7.29,"temp_max":7.29,"sea_level":996.79,"grnd_level":996.68},"wind":{"speed":14.82,"deg":245.501},"clouds":{"all":76},"dt":1555024351,"sys":{"message":0.0037,"sunrise":1555030589,"sunset":1555069953},"id":0,"name":"","cod":200}
-=======
-{"coord":{"lon":78.68,"lat":-48.61},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"stations","main":{"temp":5.19,"pressure":1002.35,"humidity":100,"temp_min":5.19,"temp_max":5.19,"sea_level":1002.35,"grnd_level":1002.28},"wind":{"speed":15.97,"deg":223.001},"clouds":{"all":56},"dt":1555024287,"sys":{"message":0.004,"sunrise":1555031994,"sunset":1555071125},"id":0,"name":"","cod":200}
->>>>>>> 005a32998ede83c99188fcf408cbb7773f0eeb6d
+{"coord":{"lon":149.65,"lat":15.99},"weather":[{"id":500,"main":"Rain","description":"light rain","icon":"10n"}],"base":"stations","main":{"temp":26.19,"pressure":1014.27,"humidity":100,"temp_min":26.19,"temp_max":26.19,"sea_level":1014.27,"grnd_level":1014.2},"wind":{"speed":4.57,"deg":80.5005},"rain":{"3h":2.025},"clouds":{"all":64},"dt":1555025736,"sys":{"message":0.0033,"sunrise":1555012136,"sunset":1555056924},"id":0,"name":"","cod":200}
