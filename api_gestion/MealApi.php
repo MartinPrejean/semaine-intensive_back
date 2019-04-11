@@ -94,6 +94,7 @@ foreach ($nationalities as $key => $value) {
   $ingredientTable = 'not implemented yet';
   $mealType = 'not implemented yet';
   $mealName = 'not implemented yet';
+  $mealRecipe = 'not implemented yet';
   }
 }
 
