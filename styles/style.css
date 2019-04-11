@@ -1,3 +1,5 @@
+/* ALL FONT */
+
 @font-face {
 	font-family: 'Geomanist';
 	src: url('fonts/geomanist/hinted-Geomanist-Light.eot');
@@ -46,7 +48,7 @@ nav{
 	font-family: 'Geomanist';
 	font-weight: 500;
 	text-transform: uppercase;
-	margin-top: 36px; /* a changer */
+	margin-top: 36px;
 }
 
 nav .list{
@@ -118,9 +120,6 @@ nav a{
 	color: #333333;
 }
 
-
-
-
 .button_discover{
 	width: 206px;
 	height: 50px;
@@ -150,19 +149,18 @@ nav a{
 	
 }
 
-
-
 .map{
 	height: 500px;
 }
 .ripple-effect{
-	fill: red;
+	fill: #FFD32A;
 }
 
-/* INDEX CSS */
+/* INDEX CSS PAGE */
 
 /* INFO COUNTRY */
 
+/* INFO COUNTRY */
 .country{
 	font-family: 'Geomanist';
 	font-style: normal;
@@ -172,8 +170,6 @@ nav a{
 
 	color: #333333;
 }
-
-
 
 .active_country{
 	font-family: Geomanist;
@@ -185,6 +181,7 @@ nav a{
 	color: #FFD32A;
 }
 
+/* COORDONATE AND WEATHER */
 .longitude{
 	margin-right: 45px;
 	font-family: 'Abel';
@@ -572,7 +569,6 @@ nav a{
 .container_timeline:nth-last-child(-n+1){
 	margin-bottom: 100px;
 }
-
 
 
 /* MEDIA QUERIES */
