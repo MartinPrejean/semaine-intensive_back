@@ -56,7 +56,7 @@
                     <div class="button_discover">Discover</div>
 
                 </div>
-                <div class="container_info">
+                <div class="container_info hide">
           
                     <div class="country">Currently on <br><span class="active_country"><?= $country ?></span></div>
 
@@ -84,7 +84,7 @@
             
             </div>
         </div>
-        <div class="recipe_container">
+        <div class="recipe_container hide">
             <div class="line"></div>
             <div class="recipe_subtitle">Recipe</div>
 
