@@ -38,6 +38,7 @@ foreach ($nationalities as $key => $value)
   if ($country == $key) 
   {
     $country2 = $value;
+
     // Call to cURL - Meals 
     $URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a='.$country2;
 
@@ -124,9 +125,8 @@ foreach ($nationalities as $key => $value)
     $quantitiesTable[]='not implemented yet';
     $ingredientTable = [];
     $ingredientTable[]='not implemented yet';
-  $mealType = 'not implemented yet';
-  $mealName = 'not implemented yet';
-  $mealRecipe = 'not implemented yet';
+    $mealType = 'not implemented yet';
+    $mealName = 'not implemented yet';
+    $mealRecipe = 'not implemented yet';
   }
 }
-  // var_dump($quantitiesTable);

@@ -17,6 +17,12 @@ Location of the area flown over by the ISS
 
 Responsive
 
+### Technologies 
+* PHP
+* HTML / CSS
+* OOP JS
+* d3.js librairy
+
 ### APIs
 
 OpenNotify : <http://open-notify.org/Open-Notify-API/>

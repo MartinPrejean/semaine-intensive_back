@@ -152,6 +152,12 @@ nav a{
 .map{
 	height: 500px;
 }
+
+#svg6394{
+	width: 3%;
+	height: 3%;
+}
+
 .ripple-effect{
 	fill: #FFD32A;
 }
@@ -489,13 +495,15 @@ nav a{
 .container_date{
 	display: flex;
 	flex-direction: row;
-	margin-top: 80px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .container_date_reverse{
 	display: flex;
 	flex-direction: row-reverse;
-	margin-top: 80px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .container_date .container_picture img{
@@ -567,7 +575,21 @@ nav a{
 }
 
 .container_timeline:nth-last-child(-n+1){
-	margin-bottom: 100px;
+	margin-bottom: 80px;
+}
+
+.copyright{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 180px;
+	font-family: Geomanist;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: normal;
+
+	color: #333333;
 }
 
 
