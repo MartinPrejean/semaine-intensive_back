@@ -1,8 +1,15 @@
 <?php
-//includes
+// includes
 include_once('utils/utils.php');
-// Call to URL
+
+/*
+*                      Open Notify (ISS) API request
+*/
+
+// call to URL
 $URL = 'http://api.open-notify.org/iss-now.json';
+
+// Get data from URL
 $data = getData($URL);
 $result = json_decode($data);
 
@@ -11,21 +18,21 @@ $issLatitude = $result->iss_position->latitude;
 $issLongitude = $result->iss_position->longitude;
 
 // Sucess of Call to URL
-if($result->message === 'success')
-{
-  // ISS Location variables
-  $issLatitude;
-  $issLongitude;
-  // ISS TestMap
-  $staticMapUrl = 'https://maps.googleapis.com/maps/api/staticmap?';
-  $staticMapUrl .= http_build_query([
-      'center' => $issLatitude.','.$issLongitude,
-      'markers' => $issLatitude.','.$issLongitude,
-      'zoom' => 1,
-      'size' => '800x800',
-      'key' => 'AIzaSyAPwpGHLkdZCvyPYjUxoVTQHozgOmE0eH4',
-  ]);
-}
+// if($result->message === 'success')
+// {
+//   // ISS Location variables
+//   $issLatitude;
+//   $issLongitude;
+//   // ISS TestMap
+//   $staticMapUrl = 'https://maps.googleapis.com/maps/api/staticmap?';
+//   $staticMapUrl .= http_build_query([
+//       'center' => $issLatitude.','.$issLongitude,
+//       'markers' => $issLatitude.','.$issLongitude,
+//       'zoom' => 1,
+//       'size' => '800x800',
+//       'key' => 'AIzaSyAPwpGHLkdZCvyPYjUxoVTQHozgOmE0eH4',
+//   ]);
+// }
 
 
 
@@ -103,23 +110,3 @@ if($result->message === 'success')
 
 
     // include 'API_request/restAPI_request.php';
-?>
-    <html lang="fr">
-    <head>
-      <meta charset="utf-8">
-      <title><?php echo($title); ?></title>
-      <meta name="description" content="Semaine Intensive Back">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-      <!-- <link type="text/css" rel="stylesheet" href="styles/style.css"> -->
-      <link rel="shortcut icon" href="content/favicon.png">
-    </head>
-    <body>
-      <h3>ISS Location</h3>
-        <div>Longitude: <?= $issLongitude ?>°</div>
-        <div>Latitude: <?= $issLatitude ?>°</div>
-      <img width="800" height="800" src="<?= $staticMapUrl ?>">
-    </body>
-    <script src="script.js"></script>
-  </html>

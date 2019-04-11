@@ -1,8 +1,12 @@
 <?php
+// Include
 include('issDataAPI.php');
-// 
-// Weather API request
-// 
+
+/*
+*                      Weather API request
+*/
+
+// Call to URL
 $URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 // Country location
@@ -15,9 +19,12 @@ $URL.= http_build_query([
 
 // Get data from URL
 $data = getData($URL);
-$result_weather = json_decode($data);
+$result = json_decode($data);
+$weather = $result->weather[0]->description;
+$temp = $result->main->temp;
+var_dump($temp);
 
-Print_r($result_weather);
+
 
 // // Create cache info
 // $cacheKey = md5($URL);
@@ -35,4 +42,3 @@ Print_r($result_weather);
 //     $result_weather = file_get_contents($cachePath);
 //     $cacheUsed = true;
 // }
-?>
