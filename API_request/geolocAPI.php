@@ -9,45 +9,27 @@ include 'issDataAPI.php';
 // Call to URL
 $URL = 'http://api.geonames.org/findNearbyJSON?';
 
-    // Create cache info
-    $cacheKey = md5($URL);
-    $cachePath = './cache/'.$cacheKey;
-    $cacheUsed = false;
+// Create cache info
+$cacheKey = md5($URL);
+$cachePath = './cache/'.$cacheKey;
+$cacheUsed = false;
 
-    // Get country name by location
-    $URL.= http_build_query([
-      'lat' => $issLatitude,
-      'lng' => $issLongitude,
-      'username' => 'semaine_intensive',
-    ]);
+// Cache available
+if(file_exists($cachePath) && time() - filemtime($cachePath) < 5)
+{
+    $result = file_get_contents($cachePath); 
+    $cacheUsed = true;
+}
+
+
+// Get country name by location
+$URL.= http_build_query([
+  'lat' => $issLatitude,
+  'lng' => $issLongitude,
+  'username' => 'semaine_intensive',
+]);
 
 // Get data from URL
-$data = getData($URL);
+$data = getData($URL, $cachePath);
 $result = json_decode($data);
 $country = $result->geonames[0]->countryName ?? 'Ocean';
-
-// test data
-// print_r($URL);
-// print_r($result);
-// print_r($country);
-// return $result;
-
-
-// // Create cache info
-// $cacheKey = md5($URL);
-// $cachePath = './cache/'.$cacheKey;
-// $cacheUsed = false;
-
-// //Cache available
-// if(file_exists($cachePath) && time() - filemtime($cachePath) < 100)
-// {
-//     $result_geonames = file_get_contents($cachePath);
-//     $cacheUsed = true;
-// }
-// // Cache not available
-// else
-// {
-//   $isResult_geonames = countryPosition($URL, $cachePath);
-// }
-// // Decode JSON
-// // $result = json_decode($result);

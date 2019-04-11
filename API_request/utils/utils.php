@@ -1,6 +1,6 @@
 <?php
 // global getData();
-function getData($url, $cacheDuration = 5){
+function getData($url, $cachePath){
 // Make request to API
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
@@ -11,6 +11,9 @@ function getData($url, $cacheDuration = 5){
  
     $result = curl_exec($curl);
     curl_close($curl);
+
+    // Save in cache
+    file_put_contents($cachePath, $result);
 
     return $result;
 }

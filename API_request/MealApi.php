@@ -41,20 +41,52 @@ foreach ($nationalities as $key => $value) {
     $country2 = $value;
     // Call to curl - Meals 
     $URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a='.$country2;
-      
-    // Get data from URL - Meals
-    $data = getData($URL);
-    $result = json_decode($data);
+
+    // Create cache info
+    $cacheKey = md5($URL);
+    $cachePath = './cache/'.$cacheKey;
+    $cacheUsed = false;
+
+    // Cache available
+    if(file_exists($cachePath) && time() - filemtime($cachePath) < 5)
+    {
+        $result = file_get_contents($cachePath); 
+        $cacheUsed = true;
+    }
+
+    else 
+    {
+        // Get data from URL - Meals
+        $data = getData($URL, $cachePath);
+        $result = json_decode($data);
+    }
+
       
     // Get meal ID 
     $mealId = $result->meals[0]->idMeal;
       
     // Call to curl - Recipe 
     $URL2 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='.$mealId;
-      
-    // Get data from URL - Meals
-    $data2 = getData($URL2);
-    $result = json_decode($data2);
+
+    // Create cache info
+    $cacheKey = md5($URL);
+    $cachePath = './cache/'.$cacheKey;
+    $cacheUsed = false;
+
+    // Cache available
+    if(file_exists($cachePath) && time() - filemtime($cachePath) < 5)
+    {
+        $result = file_get_contents($cachePath); 
+        $cacheUsed = true;
+    }
+    
+    else 
+    {
+      // Get data from URL - Meals
+      $data2 = getData($URL2, $cachePath);
+      $result = json_decode($data2);
+    }
+
       
     // Get Meal name
     $mealName = $result->meals[0]->strMeal;
