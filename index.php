@@ -64,8 +64,8 @@
                     </div>
                     
                     <div class="weather">
-                        <div class="temp"><?= $temp ?>°</div>
-                        <div class="weather_description"><?= $weather ?></div>
+                        <div class="temp">Temps: <?= $temp ?>°</div>
+                        <div class="weather_description">Weather: <?= $weather ?></div>
                     </div>
 
                     <div class="country_information">
