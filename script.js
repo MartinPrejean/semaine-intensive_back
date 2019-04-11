@@ -26,3 +26,4 @@ window
         console.log(_result)
     })
 
+//<img class="world_map" width="300" height="300" src="<?= $staticMapUrl ?>">
