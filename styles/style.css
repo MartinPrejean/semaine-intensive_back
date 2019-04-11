@@ -150,11 +150,15 @@ nav a{
 	
 }
 
-
-
 .map{
 	height: 500px;
 }
+
+#svg6394{
+	width: 3%;
+	height: 3%;
+}
+
 .ripple-effect{
 	fill: red;
 }

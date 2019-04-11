@@ -1,5 +1,6 @@
 class Map {
-    constructor(_element, _long, _lat) {
+    constructor(_element, _long, _lat) 
+    {
         this.element = _element
 
         this.width = this.element.offsetWidth
@@ -32,7 +33,8 @@ class Map {
         
     }
 
-    initMap() {        
+    initMap() 
+    {        
         d3.json('./custom.geo.json').then((_geojson) => {
             this.deps.selectAll("path")
                 .data(_geojson.features)
@@ -43,7 +45,8 @@ class Map {
         })
     }
 
-    popDot(_long, _lat) { // Bien envoyer un objet avc latitude et longitude pour projection
+    popDot(_long, _lat) 
+    { // Bien envoyer un objet avc latitude et longitude pour projection
         this.locations.selectAll('circle').remove()        
         this.circle = this.locations
             .append("circle", )
@@ -58,7 +61,9 @@ class Map {
         
     }
 
-    resizeMap() {
+
+    resizeMap() 
+    {
         const resize = () => {
             this.width = this.element.offsetWidth
             this.height = this.element.offsetHeight
@@ -77,7 +82,8 @@ class Map {
         window.addEventListener('resize', resize)
     }
 
-    apiCall() {
+    apiCall() 
+    {
         window
             .fetch('http://api.open-notify.org/iss-now.json',
             {
@@ -96,15 +102,18 @@ class Map {
             })
     }
 
-    tick() {
+    tick() 
+    {
         this.apiCall()
         this.popDot(latitudeISS, longitudeISS)
     }
     
-    componentDidMount() {
+    componentDidMount() 
+    {
         setInterval(()=> this.tick(), 5000)
     }
 }
 
 const map = document.querySelector('.map')
+
 let world = new Map(map,longitudeISS,latitudeISS);
