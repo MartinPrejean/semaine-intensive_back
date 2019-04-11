@@ -1,67 +1,31 @@
-<?php $title = 'Semaine intensive'; ?>
-<?php $currentPage = 'index'; ?>
-
 <?php
+    
+    $title = 'Semaine intensive';
+    global $issLatitude;
+    global $issLongitude;
 
-  global $country;
-  
-  // ISS Location variables
-  global $issLatitude;
-  global $issLongitude;
+    // Includes
+    include 'API_request/issDataAPI.php';
 
-  // Includes
-  include 'fonctions.php';
+    $issLatitude = $result->iss_position->latitude;
+    $issLongitude = $result->iss_position->longitude;
 
-   // ISS API request
-  include 'API_request/issAPI_request.php';
+    include 'API_request/geolocAPI.php';
 
-  echo '<pre>';
-  print_r($result_iss);
-  echo '</pre>';
+    include 'API_request/weatherAPI.php';
 
-  $issLatitude = $result_iss->iss_position->latitude;
-  $issLongitude = $result_iss->iss_position->longitude;
-  
-  // Weather API request
-  include 'API_request/weatherAPI_request.php';
+    $temp = $result->main->temp;
+    $weather = $result->weather[0]->description;
 
-    // 
-    // Create static map URL
-    //
+    include 'API_request/MealAPI.php';
 
-    if($result_iss->message === 'success')
-    {
+    include 'API_request/wikiAPI.php';
 
-        $staticMapUrl = 'https://maps.googleapis.com/maps/api/staticmap?';
-        $staticMapUrl .= http_build_query([
-            'center' => $issLatitude.','.$issLongitude,
-            'markers' => $issLatitude.','.$issLongitude,
-            'zoom' => 1,
-            'size' => '300x300',
-            'key' => 'AIzaSyAPwpGHLkdZCvyPYjUxoVTQHozgOmE0eH4',
-        ]);
 
-    }
-
-    // Geonames API request
-    include 'API_request/geonamesAPI_request.php';
-
-    echo '<pre>';
-    print_r($url_geonames);
-    echo '</pre>';
-  
-
-    // Rest API request
-    include 'API_request/restAPI_request.php';
-
-    // echo '<pre>';
-    // print_r($result_rest);
-    // echo '</pre>';
-    // echo '<pre>';
-    // print_r($url_rest);
-    // echo '</pre>';
 
 ?>
+
+
 
 <!DOCTYPE html>
 <!--[if lte IE 7]> <html class="ie67 ie678" lang="fr"> <![endif]-->
@@ -74,27 +38,103 @@
     <meta name="description" content="Semaine Intensive Back">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-    <!-- <link type="text/css" rel="stylesheet" href="styles/style.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="content/favicon.png">
   </head>
   <body>
-    <h3>ISS Location</h3>
-      <div>Longitude: <?= $issLongitude ?>°</div>
-      <div>Latitude: <?= $issLatitude ?>°</div>
-    <img width="300" height="300" src="<?= $staticMapUrl ?>">
-    
-    <h3><?= $country ?></h3>
+    <div class="container_test">
+        <?php include 'templates/nav-bar.php'; ?>
 
-    <h3>Weather</h3>
-    <p>
-      Temperature : <?= $result_weather->main->temp ?>°
-    </p>
-      <?php foreach($result_weather->weather as $_weather): ?>
-          <p>
-            Weather casting : <?= $_weather->description ?></div>
-          </p>
-      <?php endforeach ?>
-  <script src="scripts/script.js"><script>
-  </body>
+        <div class="container_landing">
+            <div class="container_landing_left">
+                <div class="container_description">
+
+                    <div class="text_intro">With the <span class="iss_yellow">ISS</span>, <br>Enrich your <br>culture!</div>
+                    <div class="current_text">The international space station constantly flies over our planet, D’<span class="iss_yellow">ISS</span> COVER makes you discover a new culture according to its position</div>
+
+                    <div class="button_discover">Discover</div>
+
+                </div>
+                <div class="container_info">
+          
+                    <div class="country">Currently on <br><span class="active_country"><?= $country ?></span></div>
+
+                    <div class="coord">
+                        <div class="longitude"><span class="grey_color">Long: </span><?= $issLongitude ?>°</div>
+                        <div class="latitude"><span class="grey_color">Lat: </span><?= $issLatitude ?>°</div>
+                    </div>
+                    
+                    <div class="weather">
+                        <div class="temp"><?= $temp ?>°</div>
+                            <div class="weather_description"><?= $weather ?>
+                    </div>
+
+                    <div class="country_information">
+                        <div class="line"></div>
+                        <div class="country_description_title">Country <span class="country_color"><?= $country ?></span></div>
+                        <div class="country_description"><?= $intro ?></div>
+                        <div class="link_country"><a href="#">More about <span class="country_color"><?= $country ?></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container_landing_right">
+                
+                <div class="map"></div>
+            
+            </div>
+        </div>
+        <div class="recipe_container">
+            <div class="line"></div>
+            <div class="recipe_subtitle">Recipe</div>
+
+            <div class="recipe_card">
+                <div class="recipe_left">
+                    <div class="recipe_name"><?= $mealName ?></div>
+                    <div class="recipe_img"></div>
+                    <div class="recipe_detail">
+                        <div class="recipe_type"><?= $mealType ?></div>
+                        <div class="recipe_country">Italian</div>
+                    </div>
+                </div>
+
+                <div class="recipe_middle">
+                    <div class="recipe_ingredient_title">Ingredients</div>
+                        <div class="recipe_ingredient_detail">
+                            
+                            <div class="recipe_ingredient"> 
+                                <?php foreach ($ingredientTable as $ingredient): ?>
+                                    <?= $ingredient ?>
+                                <?php endforeach ?>
+                            </div>
+                            <div class="recipe_measure">
+                                <?php foreach ($quantitiesTable as $quantity): ?>
+                                    <?= $quantity ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                </div>
+                <div class="recipe_right">
+                    <div class="recipe_description_title">How to make it</div>
+                    <div class="recipe_description">
+                        Mash the ricotta and beat well with the egg yolks, stir in the flour, sugar, cinnamon, grated lemon rind and the rum and mix well. 
+                        You can do this in a food processor. 
+                        Beat the egg whites until stiff, fold in and pour into a buttered and floured 25cm cake tin. 
+                        Bake in the oven at 180ºC/160ºC fan/gas 4 for about 40 minutes, or until it is firm.
+                        Serve hot or cold dusted with icing sugar</div>
+                </div>
+            </div> 
+        </div>         
+    </div>
+
+    <script>
+        const countryName = '<?= $country ?>';
+        let latitudeISS = '<?= $issLatitude ?>';
+        let longitudeISS = '<?= $issLongitude ?>';
+    </script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="scripts/map.js"></script>
+
+    <script src="scripts/app.js"></script>      
+</body>
 </html>

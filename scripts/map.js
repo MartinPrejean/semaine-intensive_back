@@ -7,7 +7,7 @@ class Map {
 
         this.projection = d3.geoNaturalEarth1() // Changer projection de la map
             .center([0, 0])
-            .scale(this.width / this.height * 80) // Modifier taille map
+            .scale(this.width / this.height * 250) // Modifier taille map
             .translate([this.width / 2, this.height / 1.75]) // Mofifier position
         this.path = d3.geoPath()
             .projection(this.projection)
@@ -17,10 +17,11 @@ class Map {
             .attr("width", this.width)
             .attr("height", this.height)
 
-        this.locations = this.svg.append("svg:g")
-            .attr("class", "locations")
+        
 
         this.deps = this.svg.append("g")
+        this.locations = this.svg.append("svg:g")
+            .attr("class", "locations")
         this.circle
         this.initMap()
         this.resizeMap()
@@ -28,6 +29,7 @@ class Map {
         this.apiCall()
         this.tick()
         this.componentDidMount()
+        
     }
 
     initMap() {        
@@ -89,6 +91,8 @@ class Map {
             {
                 longitudeISS = _result.iss_position.longitude
                 latitudeISS = _result.iss_position.latitude
+                console.log(latitudeISS, longitudeISS);
+
             })
     }
 
@@ -104,4 +108,3 @@ class Map {
 
 const map = document.querySelector('.map')
 let world = new Map(map,longitudeISS,latitudeISS);
-    
