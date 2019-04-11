@@ -20,6 +20,7 @@ $URL.= http_build_query([
 // Get data from URL
 $data = getData($URL);
 $result = json_decode($data);
+
 // Get Weather from Json file
 $weather = $result->weather[0]->description;
 $temp = $result->main->temp;

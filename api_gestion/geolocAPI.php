@@ -18,4 +18,3 @@ $URL.= http_build_query([
 $data = getData($URL);
 $result_geonames = json_decode($data);
 $country = $result_geonames->geonames[0]->countryName ?? 'Ocean';
-?>

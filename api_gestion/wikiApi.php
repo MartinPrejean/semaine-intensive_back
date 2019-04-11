@@ -10,7 +10,7 @@ include('geolocAPI.php');
 // Formate variable country
 $country = str_replace(' ', '_', $country);
 
-// Get option from Wikipedia
+// Option from Wikipedia
 $sentensesCount = '5'; //change for number of full sentences you need
 
 // Url Api communication (only 8 sentences)
@@ -21,6 +21,3 @@ $data = getData($URL);
 $result = json_decode($data);
 $key = array_keys((array) $result->query->pages)[0];
 $intro = $result->query->pages->$key->extract;
-
-// Print the intro of the research
-// print_r($intro);

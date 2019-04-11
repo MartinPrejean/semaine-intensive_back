@@ -55,7 +55,7 @@ foreach ($nationalities as $key => $value) {
     // Get data from URL - Meals
     $data2 = getData($URL2);
     $result = json_decode($data2);
-    var_dump($result);         
+          
     // Get Meal name
     $mealRecipe = $result->meals[0]->strInstructions;
 
@@ -97,7 +97,3 @@ foreach ($nationalities as $key => $value) {
   $mealRecipe = 'not implemented yet';
   }
 }
-
-
-
-  // var_dump($quantitiesTable);
