@@ -6,7 +6,7 @@
 // Includes
   include 'api_gestion/mealAPI.php';
   include 'api_gestion/weatherAPI_request.php';
-  include 'api_gestion/mealAPI.php';
+  // include 'api_gestion/mealAPI.php';
 
 //   include 'fonctions.php';
 ?>
@@ -28,16 +28,17 @@
   </head>
   <body>
     <!-- <h3>ISS Location</h3> -->
-        <div><?= $issLongitude ?>° <br><br></div>
-        <div><?= $issLatitude ?>°</div>
+        <div><?= $issLongitude ?> <br><br></div>
+        <div><?= $issLatitude ?></div>
         <div><?= $country ?><br><br></div>
         <div><?= $weather ?><br><br></div>
-        <div><?= $temp ?>°C<br><br></div>
+        <div><?= $temp ?><br><br></div>
         <div><?= $intro ?><br><br></div>
         <div><?= $mealName ?><br><br></div>
         <div><?= $mealType ?><br><br></div>
         <div><?= print_r($ingredientTable); ?><br><br></div>
         <div><?= print_r($quantitiesTable); ?><br><br></div>
+        <div></div>
   </body>
   <script src="script.js"><script>
 </html>

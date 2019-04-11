@@ -22,7 +22,7 @@ $data = getData($URL);
 $result = json_decode($data);
 $weather = $result->weather[0]->description;
 $temp = $result->main->temp;
-var_dump($temp);
+// var_dump($temp);
 
 
 

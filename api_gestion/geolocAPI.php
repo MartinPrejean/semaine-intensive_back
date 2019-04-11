@@ -3,29 +3,29 @@
 include('issDataAPI.php');
 
 /*
-*                      Geonames API request
+*                      OpenCageData API request
 */
 
 // Call to URL
-$URL = 'http://api.geonames.org/findNearbyJSON?';
+$URL = 'https://api.opencagedata.com/geocode/v1/json?key=fd094825a8f34ed08ebfce3f1ab54e49&q=';
 
 // Get country name by location
 $URL.= http_build_query([
   'lat' => $issLatitude,
   'lng' => $issLongitude,
-  'username' => 'semaine_intensive', //needed for the API to work
 ]);
 
 // Get data from URL
 $data = getData($URL);
 $result = json_decode($data);
-$country = $result->geonames[0]->countryName ?? 'Ocean';
+// var_dump($result);
+$country = $result->results[0]->components->country;
 
 // test data
 // print_r($URL);
 // print_r($result);
 // print_r($country);
-return $result;
+// return $result;
 
 
 // // Create cache info
@@ -39,10 +39,10 @@ return $result;
 //     $result_geonames = file_get_contents($cachePath);
 //     $cacheUsed = true;
 // }
-// Cache not available
+// // Cache not available
 // else
 // {
 //   $isResult_geonames = countryPosition($URL, $cachePath);
 // }
-// Decode JSON
-// $result = json_decode($result);
+// // Decode JSON
+// // $result = json_decode($result);

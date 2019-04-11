@@ -1,4 +1,5 @@
 <?php
+// global getData();
 function getData($url, $cacheDuration = 5){
 // Make request to API
     $curl = curl_init();
