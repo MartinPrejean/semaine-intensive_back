@@ -6,10 +6,10 @@ class Map {
         this.width = this.element.offsetWidth
         this.height = this.element.offsetHeight
 
-        this.projection = d3.geoNaturalEarth1() // Changer projection de la map
+        this.projection = d3.geoNaturalEarth1() // Change projection of the map
             .center([0, 0])
-            .scale(this.width / this.height * 100) // Modifier taille map
-            .translate([this.width / 2, this.height / 1.75]) // Mofifier position
+            .scale(this.width / this.height * 100) // Scale modifier
+            .translate([this.width / 2, this.height / 1.75]) // Position modifier
         this.path = d3.geoPath()
             .projection(this.projection)
 
@@ -33,6 +33,7 @@ class Map {
         
     }
 
+    // Create Map
     initMap() 
     {        
         d3.json('./custom.geo.json').then((_geojson) => {
@@ -45,8 +46,9 @@ class Map {
         })
     }
 
+    // Dot of ISS real-time position
     popDot(_long, _lat) 
-    { // Bien envoyer un objet avc latitude et longitude pour projection
+    { // Return latitude and longitude of object
         this.locations.selectAll('circle').remove()        
         this.circle = this.locations
             .append("circle", )
@@ -62,6 +64,7 @@ class Map {
     }
 
 
+    // Resize map
     resizeMap() 
     {
         const resize = () => {
@@ -82,6 +85,7 @@ class Map {
         window.addEventListener('resize', resize)
     }
 
+    // Fetch Data from API
     apiCall() 
     {
         window
@@ -108,6 +112,7 @@ class Map {
         this.popDot(latitudeISS, longitudeISS)
     }
     
+    // Call API every 5sec
     componentDidMount() 
     {
         setInterval(()=> this.tick(), 5000)

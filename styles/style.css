@@ -656,6 +656,15 @@ nav a{
 	.container_test{
 		width: 600px;
 	}
+	.recipe_card{
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 700px){
+	.container_test{
+		width: 500px;
+	}
 }
 
 @media screen and (max-width: 480px){
