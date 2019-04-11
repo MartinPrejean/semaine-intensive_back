@@ -156,7 +156,7 @@ nav a{
 
 	.container_date .container_picture img, .container_date_reverse .container_picture img{
 		width: 100%;
-		height: auto;
+		max-height: 400px;
 	}
 
 	.container_description_timeline .date{
@@ -211,7 +211,7 @@ nav a{
 		transform:  translateX(0px);
 	}
 } */
-
+/* 
 @media screen and(max-width: 480px){
 	.container_test{
 		width: 300px;
@@ -220,7 +220,7 @@ nav a{
 	/* .map{
 		display: none;
 	} */
-}
+} */
 
 /* END NAV BAR */
 
@@ -653,7 +653,8 @@ nav a{
 }
 
 .container_date .container_picture img{
-	height: 400px;
+	max-height: 400px;
+	max-width: 500px;
 }
 
 
@@ -715,7 +716,8 @@ nav a{
 }
 
 .container_date_reverse .container_picture img{
-	height: 400px;
+	max-height: 400px;
+	max-width: 500px;
 }
 
 
