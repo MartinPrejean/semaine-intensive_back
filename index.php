@@ -38,7 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="styles/style.css">
-    <link rel="shortcut icon" href="content/favicon.png">
+    <link rel="shortcut icon" href="images/International_Space_Station.svg">
   </head>
   <body>
     <div class="container">
@@ -67,12 +67,14 @@
                         <div class="temp">Temps: <?= $temp ?>°</div>
                         <div class="weather_description">Weather: <?= $weather ?></div>
                     </div>
+                    <div class="pop">Pop: <?= $population ?></div>
+
 
                     <div class="country_information">
                         <div class="line"></div>
                         <div class="country_description_title">Country <span class="country_color"><?= $country ?></span></div>
                         <div class="country_description"><?= $intro ?></div>
-                        <div class="link_country"><a href="#">More about <span class="country_color"><?= $country ?></span></a></div>
+                        <div class="link_country"><a href="https://en.wikipedia.org/wiki/<?= $country ?>">More about <span class="country_color"><?= $country ?></span></a></div>
                     </div>
                 </div>
             </div>
@@ -118,7 +120,6 @@
                 </div>
             </div> 
         </div>  
-        <?php include 'templates/footer.php'; ?>       
     </div>
 
     <script>
