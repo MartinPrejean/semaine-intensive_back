@@ -101,8 +101,6 @@ class Map {
             {
                 longitudeISS = _result.iss_position.longitude
                 latitudeISS = _result.iss_position.latitude
-                console.log(latitudeISS, longitudeISS);
-
             })
     }
 
