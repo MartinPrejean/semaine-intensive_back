@@ -228,7 +228,7 @@ nav a{
 	color: #333333;
 }
 
-.container_info .temp .weather{
+.container_info .weather{
 	display: flex;
 	flex-direction: row;
 	margin-top: 15px;
@@ -241,6 +241,17 @@ nav a{
 	font-weight: normal;
 	font-size: 22px;
 	line-height: normal;
+
+	color: #333333;
+}
+
+.container_info .pop{
+	font-family: 'Abel';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	line-height: normal;
+	margin-top: 15px;
 
 	color: #333333;
 }

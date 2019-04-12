@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^$|discover|home index.php
+RewriteRule iss_station|issstation|iss|station iss_station.php
