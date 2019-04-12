@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"geonames":[{"adminCode1":"00","lng":"-157.95","distance":"48.77519","geonameId":4031956,"toponymName":"Bryant Seamount","fcl":"U","population":0,"name":"Bryant Seamount","fclName":"undersea","fcodeName":"seamount","adminName1":"","lat":"49.33333","fcode":"SMU"}]}
-=======
-{"geonames":[{"adminCode1":"00","lng":"149.88326","distance":"28.56169","geonameId":6823617,"toponymName":"Skornyakova Guyot","fcl":"U","population":0,"name":"Skornyakova Guyot","fclName":"undersea","fcodeName":"tablemount (or guyot)","adminName1":"","lat":"15.86664","fcode":"TMTU"}]}
->>>>>>> d2b90182f8d04fe6111b89497d90c6f127030641
+{"geonames":[]}

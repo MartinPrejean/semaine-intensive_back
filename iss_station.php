@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="content/favicon.png">
 </head>
 <body>
-    <div class="container_test">
+    <div class="container">
         <?php include "templates/nav-bar.php";?>
 
         <div class="container_introduction">

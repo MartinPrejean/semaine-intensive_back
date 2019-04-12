@@ -34,12 +34,22 @@
 	box-sizing: border-box;
 }
 
-.container_test{
+.container{
 	width: 1180px;
 	margin: auto;
 }
 
-/* NAV BAR */
+
+/* STYLE ELEMENT INDE*/
+.iss_yellow{
+	color: #FFD32A;
+}
+
+.grey_color{
+	color: #a2a2a2;
+}
+
+/* ---- NAV BAR ------- */
 
 nav{
 	display: flex;
@@ -69,12 +79,10 @@ nav a{
 	color: #333333;
 }
 
-.iss_yellow{
-	color: #FFD32A;
-}
-
 
 /* END NAV BAR */
+
+/* INDEX CSS PAGE */
 
 /* LANDING CSS */
 
@@ -85,20 +93,20 @@ nav a{
 	width: 100%;
 }
 
-.container_landing_left{
+.container_landing .container_landing_left{
 	width: 40%;
 }
 
 
-.container_landing_right{
+.container_landing .container_landing_right{
 	width: 60%;
 }
 
-.container_landing_right img{
+.container_landing .container_landing_right img{
 	width: 100%;
 }
 
-.text_intro{
+.container_landing .container_landing_left .container_description .text_intro{
 	
 	font-family: 'Geomanist';
 	font-style: normal;
@@ -108,7 +116,7 @@ nav a{
 	color: #333333;
 }
 
-.current_text{
+.container_landing .container_landing_left .container_description .current_text{
 	
 	margin-top: 50px;
 	font-family: 'Abel', sans-serif;
@@ -120,7 +128,7 @@ nav a{
 	color: #333333;
 }
 
-.button_discover{
+.container_landing .container_landing_left .container_description .button_discover{
 	width: 206px;
 	height: 50px;
 	margin-top: 50px;
@@ -141,17 +149,12 @@ nav a{
 	color: #333333;
 }
 
+
 /* MAP */
 
 .container_landing_right .map{
-	width: 100%;
-	height: 100%;
-	
-}
-
-.map{
 	height: 500px;
-}
+} 
 
 #svg6394{
 	width: 3%;
@@ -162,12 +165,9 @@ nav a{
 	fill: #FFD32A;
 }
 
-/* INDEX CSS PAGE */
-
 /* INFO COUNTRY */
 
-/* INFO COUNTRY */
-.country{
+.container_info .country{
 	font-family: 'Geomanist';
 	font-style: normal;
 	font-weight: normal;
@@ -177,7 +177,7 @@ nav a{
 	color: #333333;
 }
 
-.active_country{
+.container_info .country .active_country{
 	font-family: Geomanist;
 	font-style: normal;
 	font-weight: 500;
@@ -188,7 +188,14 @@ nav a{
 }
 
 /* COORDONATE AND WEATHER */
-.longitude{
+
+.container_info .coord{
+	display: flex;
+	flex-direction: row;
+	margin-top: 25px;
+}
+
+.container_info .coord .longitude{
 	margin-right: 45px;
 	font-family: 'Abel';
 	font-style: normal;
@@ -200,7 +207,7 @@ nav a{
 
 }
 
-.latitude{
+.container_info .coord .latitude{
 	font-family: 'Abel';
 	font-style: normal;
 	font-weight: normal;
@@ -208,20 +215,9 @@ nav a{
 	line-height: normal;
 
 	color: #333333;
-
 }
 
-.coord{
-	display: flex;
-	flex-direction: row;
-	margin-top: 25px;
-}
-
-.grey_color{
-	color: #a2a2a2;
-}
-
-.temp{
+.container_info .temp{
 	margin-right: 15px;
 	font-family: 'Abel';
 	font-style: normal;
@@ -230,17 +226,16 @@ nav a{
 	line-height: normal;
 
 	color: #333333;
-
 }
 
-.weather{
+.container_info .temp .weather{
 	display: flex;
 	flex-direction: row;
 	margin-top: 15px;
 }
 
 
-.weather_description{
+.container_info .weather .weather_description{
 	font-family: 'Abel';
 	font-style: normal;
 	font-weight: normal;
@@ -275,10 +270,6 @@ nav a{
 	z-index: -1;
 }
 
-.country_information .country_color{
-	color: #FFD32A;
-}
-
 .country_information .country_description{	
 	font-family: Abel;
 	font-style: normal;
@@ -290,7 +281,12 @@ nav a{
 	color: #333333;
 }
 
-.link_country{
+.country_information .country_color{
+	color: #FFD32A;
+}
+
+
+.country_information .link_country{
 	font-family: Abel;
 	font-style: normal;
 	font-weight: normal;
@@ -307,7 +303,7 @@ nav a{
 
 /* RECIPE */
 
-.recipe_subtitle{
+.recipe_container .recipe_subtitle{
 	font-family: Geomanist;
 	font-style: normal;
 	font-weight: 500;
@@ -318,7 +314,7 @@ nav a{
 	color: #333333;
 }
 
-.recipe_card{
+.recipe_container .recipe_card{
 	width:100%;
 	margin-top: 30px;
 	display: flex;
@@ -326,7 +322,7 @@ nav a{
 	justify-content: space-between;
 }
 
-.recipe_card .recipe_left .recipe_name{
+.recipe_container .recipe_card .recipe_left .recipe_name{
 	font-family: Geomanist;
 	font-style: normal;
 	font-weight: normal;
@@ -336,12 +332,13 @@ nav a{
 	color: #333333;
 }
 
-.recipe_card .recipe_left .recipe_detail{
+.recipe_container .recipe_card .recipe_left .recipe_detail{
 	display: flex;
 	flex-direction: row;
 }
 
-.recipe_type, .recipe_country{
+.recipe_container .recipe_card .recipe_left .recipe_type,
+.recipe_container .recipe_card .recipe_left .recipe_country{
 	font-family: Abel;
 	font-style: normal;
 	font-weight: normal;
@@ -353,13 +350,15 @@ nav a{
 
 }
 
-.recipe_middle .recipe_ingredient_detail{
+/* MIDDLE RECIPE */
+
+.recipe_container .recipe_card .recipe_middle .recipe_ingredient_detail{
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
 }
 
-.recipe_ingredient_title{
+.recipe_container .recipe_card .recipe_middle .recipe_ingredient_title{
 	font-family: Abel;
 	font-style: normal;
 	font-weight: normal;
@@ -371,7 +370,8 @@ nav a{
 
 }
 
-.recipe_ingredient, .recipe_measure{
+.recipe_container .recipe_card .recipe_middle .recipe_ingredient_detail .recipe_ingredient, 
+.recipe_container .recipe_card .recipe_middle .recipe_ingredient_detail .recipe_measure{
 	margin-top: 15px;
 	font-family: Abel;
 	font-style: normal;
@@ -382,7 +382,7 @@ nav a{
 	color: #333333;
 }
 
-.recipe_description_title{
+.recipe_container .recipe_card .recipe_right .recipe_description_title{
 	font-family: Abel;
 	font-style: normal;
 	font-weight: normal;
@@ -393,7 +393,7 @@ nav a{
 	color: #A2A2A2;
 }
 
-.recipe_right .recipe_description{
+.recipe_container .recipe_card .recipe_right .recipe_description{
 	font-family: Abel;
 	font-style: normal;
 	font-weight: normal;
@@ -404,6 +404,7 @@ nav a{
 	color: #333333;
 
 }
+
 /* ISS STATION PAGE */
 
 .container_introduction{
@@ -596,19 +597,19 @@ nav a{
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1280px){
-	.container_test{
+	.container{
 		width: 1024px;
 	}
 }
 
 @media screen and (max-width: 1100px){
-	.container_test{
+	.container{
 		width: 920px;
 	}
 }
 
 @media screen and (max-width: 1000px){
-	.container_test{
+	.container{
 		width: 820px;
 	}
 	.container_landing{
@@ -621,7 +622,7 @@ nav a{
 }
 
 @media screen and (max-width: 1000px){
-	.container_test{
+	.container{
 		width: 800px;
 	}
 	.container_date, .container_date_reverse{
@@ -667,7 +668,7 @@ nav a{
 }
 
 @media screen and (max-width: 850px){
-	.container_test{
+	.container{
 		width: 600px;
 	}
 	.recipe_card{
@@ -676,20 +677,18 @@ nav a{
 }
 
 @media screen and (max-width: 700px){
-	.container_test{
+	.container{
 		width: 500px;
 	}
 }
 
 @media screen and (max-width: 480px){
-	.container_test{
+	.container{
 		width: 300px;
 	}
 	.container_landing{
 		display: flex;
-		/* flex-direction: column; */
 		flex-wrap: wrap-reverse;
-		/* flex-wrap: wrap; */
 	}
 	.container_landing .container_landing_left, .container_landing .container_landing_right{
 		width:100%;

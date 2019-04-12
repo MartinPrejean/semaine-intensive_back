@@ -125,7 +125,7 @@ foreach ($nationalities as $key => $value)
     $quantitiesTable[]='not implemented yet';
     $ingredientTable = [];
     $ingredientTable[]='not implemented yet';
-    $mealType = 'not implemented yet';
+    $mealType = 'Curently on Ocean with Bob l\'eponge';
     $mealName = 'not implemented yet';
     $mealRecipe = 'not implemented yet';
   }

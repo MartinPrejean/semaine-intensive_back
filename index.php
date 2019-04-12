@@ -41,7 +41,7 @@
     <link rel="shortcut icon" href="content/favicon.png">
   </head>
   <body>
-    <div class="container_test">
+    <div class="container">
         <?php include 'templates/nav-bar.php'; ?>
 
         <div class="container_landing">
@@ -92,25 +92,25 @@
                     <div class="recipe_img"></div>
                     <div class="recipe_detail">
                         <div class="recipe_type"><?= $mealType ?></div>
-                        <div class="recipe_country">Italian</div>
+                        <div class="recipe_country"><?= $country2 ?></div>
                     </div>
                 </div>
 
                 <div class="recipe_middle">
                     <div class="recipe_ingredient_title">Ingredients</div>
-                        <div class="recipe_ingredient_detail">
-                            
-                            <div class="recipe_ingredient"> 
-                                <?php foreach ($ingredientTable as $ingredient): ?>
-                                    <?= $ingredient ?>
-                                <?php endforeach ?>
-                            </div>
-                            <div class="recipe_measure">
-                                <?php foreach ($quantitiesTable as $quantity): ?>
-                                    <?= $quantity ?>
-                                <?php endforeach ?>
-                            </div>
+                    <div class="recipe_ingredient_detail">
+                        
+                        <div class="recipe_ingredient"> 
+                            <?php foreach ($ingredientTable as $ingredient): ?>
+                                <?= $ingredient ?>
+                            <?php endforeach ?>
                         </div>
+                        <div class="recipe_measure">
+                            <?php foreach ($quantitiesTable as $quantity): ?>
+                                <?= $quantity ?>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="recipe_right">
                     <div class="recipe_description_title">How to make it</div>
