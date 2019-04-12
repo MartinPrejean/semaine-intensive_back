@@ -21,7 +21,6 @@ if(file_exists($cachePath) && time() - filemtime($cachePath) < 5)
     $cacheUsed = true;
 }
 
-
 // Get country name by location
 $URL.= http_build_query([
   'lat' => $issLatitude,

@@ -4,6 +4,7 @@ include 'geolocAPI.php';
 /*
 *                      TheMealDB API request
 */
+
 // country into nationality
 $nationalities = array (
   'France' => 'French',
@@ -125,7 +126,7 @@ foreach ($nationalities as $key => $value)
     $quantitiesTable[]='not implemented yet';
     $ingredientTable = [];
     $ingredientTable[]='not implemented yet';
-    $mealType = 'Curently on Ocean with Bob l\'eponge';
+    $mealType = 'Currently on Ocean';
     $mealName = 'not implemented yet';
     $mealRecipe = 'not implemented yet';
   }
